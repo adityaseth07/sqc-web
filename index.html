@@ -1,0 +1,194 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SQC | Super Quant Coders</title>
+  <meta name="description" content="SQC (Super Quant Coders) is a college tech club for coding, robotics, AI, and innovation." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="boot-screen" id="bootScreen">
+    <div class="boot-terminal">
+      <p class="boot-title">SQC System Boot</p>
+      <pre class="boot-code"><code id="typingCode"></code><span class="boot-cursor" aria-hidden="true"></span></pre>
+    </div>
+  </div>
+
+  <div class="blur-orb orb-a" aria-hidden="true"></div>
+  <div class="blur-orb orb-b" aria-hidden="true"></div>
+
+  <header class="header">
+    <nav class="container nav" id="topNav">
+      <a class="brand" href="#home">SQC</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">Menu</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home" data-page-link="home" class="active">Home</a></li>
+        <li><a href="#projects" data-page-link="projects">Projects</a></li>
+        <li><a href="#events" data-page-link="events">Events</a></li>
+        <li><a href="#team" data-page-link="team">Team</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="page container">
+    <section id="home" class="view active" data-page="home">
+      <p class="eyebrow reveal">SUPER QUANT CODERS</p>
+      <h1 class="reveal">A student-run tech club building code, robots, and real-world solutions.</h1>
+      <p class="lead reveal">
+        SQC is a high-energy community where creators ship software, prototype robotics systems,
+        explore AI, and learn by building things that actually work.
+      </p>
+
+      <div class="btn-row reveal">
+        <a href="#projects" data-page-link="projects" class="btn btn-primary">Meet Chi-Chi</a>
+        <a href="#events" data-page-link="events" class="btn btn-outline">Club Activities</a>
+        <a href="https://www.instagram.com/sqc_nitj/" target="_blank" rel="noopener noreferrer" class="btn btn-instagram">Follow on Instagram</a>
+      </div>
+
+      <section class="section reveal">
+        <h2 class="section-title">What We Build Around</h2>
+        <div class="grid-3">
+          <article class="card interactive-card">
+            <h3>Software Engineering</h3>
+            <p>Web apps, APIs, app architecture, deployment pipelines, and product-focused coding.</p>
+          </article>
+          <article class="card interactive-card">
+            <h3>Robotics and Embedded</h3>
+            <p>Hardware integration, sensors, control logic, and robotic systems from prototype to demo.</p>
+          </article>
+          <article class="card interactive-card">
+            <h3>AI and Quant Thinking</h3>
+            <p>Applied machine learning, optimization, and analytical problem solving for real use cases.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section reveal">
+        <h2 class="section-title">Club Snapshot</h2>
+        <div class="grid-3">
+          <article class="card stat interactive-card">
+            <p class="stat-number">30+</p>
+            <p>Active Members</p>
+          </article>
+          <article class="card stat interactive-card">
+            <p class="stat-number">20+</p>
+            <p>Builds and Demos</p>
+          </article>
+          <article class="card stat interactive-card">
+            <p class="stat-number">24+</p>
+            <p>Workshops and Events</p>
+          </article>
+        </div>
+      </section>
+    </section>
+
+    <section id="projects" class="view" data-page="projects">
+      <h1 class="reveal">Featured Project</h1>
+      <p class="lead reveal">Chi-Chi is SQC's signature robotics build, designed as an agile and expressive robotic dog platform.</p>
+
+      <article class="section card project-feature interactive-card reveal">
+        <div class="project-media">
+          <img src="chi.png" alt="Chi-Chi robotic dog built by SQC" loading="eager" />
+        </div>
+
+        <div class="project-content">
+          <span class="badge">Robotics Flagship</span>
+          <h2>Chi-Chi: SQC Robotic Dog</h2>
+          <p>
+            Chi-Chi represents the club's robotics vision: a dog-inspired robot that combines mechanical design,
+            electronics, embedded programming, and control logic in one complete system.
+          </p>
+          <p>
+            The project is used as a live learning platform where members collaborate on gait experiments,
+            balance tuning, motion control, and behavior-driven interactions.
+          </p>
+
+          <ul class="feature-list">
+            <li>Locomotion and movement control prototypes</li>
+            <li>Sensor integration and real-time feedback loops</li>
+            <li>Collaborative hardware plus software development</li>
+            <li>Showcase-ready demonstration for tech events</li>
+          </ul>
+        </div>
+      </article>
+    </section>
+
+    <section id="events" class="view" data-page="events">
+      <h1 class="reveal">Events</h1>
+      <p class="lead reveal">A practical event ecosystem where members learn fast, compete hard, and present real builds.</p>
+      <div class="pill-row reveal">
+        <span class="pill">Weekly Coding Circle</span>
+        <span class="pill">Robotics Build Nights</span>
+        <span class="pill">Hackathon Prep Sprints</span>
+      </div>
+      <div class="section grid-3 reveal">
+        <article class="card interactive-card">
+          <h3>Tech Bootcamps</h3>
+          <p>Hands-on sessions on coding stacks, DSA strategy, git practices, and build workflows.</p>
+        </article>
+        <article class="card interactive-card">
+          <h3>Hackathons</h3>
+          <p>Team-based product sprints that push ideas to demo-ready solutions in tight timelines.</p>
+        </article>
+        <article class="card interactive-card">
+          <h3>Demo Showcases</h3>
+          <p>Public presentations where projects like Chi-Chi and software builds are demonstrated live.</p>
+        </article>
+      </div>
+      <article class="section card event-panel interactive-card reveal">
+        <h3>Upcoming Highlight: Open Build Night</h3>
+        <p>
+          A collaborative evening for code reviews, robotics tuning, and final demo rehearsals.
+          New members can walk in, interact with teams, and start contributing immediately.
+        </p>
+      </article>
+    </section>
+
+    <section id="team" class="view" data-page="team">
+      <h1 class="reveal">Team Structure</h1>
+      <p class="lead reveal">Focused verticals help members specialize while still shipping projects across domains.</p>
+      <div class="section grid-2 reveal">
+        <article class="card interactive-card">
+          <h3>Development Vertical</h3>
+          <p>Frontend, backend, mobile, and cloud workflows.</p>
+        </article>
+        <article class="card interactive-card">
+          <h3>Robotics Vertical</h3>
+          <p>Embedded systems, motion control, and hardware engineering.</p>
+        </article>
+        <article class="card interactive-card">
+          <h3>Research Vertical</h3>
+          <p>AI experiments, data science builds, and quant-oriented projects.</p>
+        </article>
+        <article class="card interactive-card">
+          <h3>Operations Vertical</h3>
+          <p>Events, outreach, communication, and execution.</p>
+        </article>
+      </div>
+      <article class="section card join-strip interactive-card reveal">
+        <h3>Want to Build With SQC?</h3>
+        <p>
+          Join us now, connect with mentors, and start building in coding, robotics, and AI teams.
+        </p>
+        <div class="btn-row compact-row">
+          <a href="https://www.instagram.com/sqc_nitj/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Join Us Now</a>
+          <a href="#events" data-page-link="events" class="btn btn-outline">View Events</a>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-wrap">
+      <p><strong>SQC</strong> | Super Quant Coders</p>
+      <a class="footer-ig" href="https://www.instagram.com/sqc_nitj/" target="_blank" rel="noopener noreferrer">@sqc_nitj</a>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
