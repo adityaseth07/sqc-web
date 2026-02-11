@@ -1,4 +1,4 @@
-# SQC Club Website
+﻿# SQC Club Website
 
 Official website project for **SQC (Super Quant Coders)**, a college tech club focused on coding, robotics, AI, and collaborative building.
 

@@ -11,15 +11,27 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div class="tv-screen" id="tvScreen" aria-hidden="true">
+    <div class="tv-glow"></div>
+    <div class="tv-core">
+      <div class="tv-line"></div>
+    </div>
+    <div class="tv-noise"></div>
+  </div>
+
   <div class="boot-screen" id="bootScreen">
     <div class="boot-terminal">
       <p class="boot-title">SQC System Boot</p>
       <pre class="boot-code"><code id="typingCode"></code><span class="boot-cursor" aria-hidden="true"></span></pre>
+      <p class="boot-status" id="compileStatus"></p>
     </div>
   </div>
 
+  <div class="site-shell" id="siteShell">
   <div class="blur-orb orb-a" aria-hidden="true"></div>
   <div class="blur-orb orb-b" aria-hidden="true"></div>
+  <div class="blur-orb orb-c" aria-hidden="true"></div>
+  <div class="bg-grid" aria-hidden="true"></div>
 
   <header class="header">
     <nav class="container nav" id="topNav">
@@ -37,10 +49,13 @@
   <main class="page container">
     <section id="home" class="view active" data-page="home">
       <p class="eyebrow reveal">SUPER QUANT CODERS</p>
-      <h1 class="reveal">A student-run tech club building code, robots, and real-world solutions.</h1>
+      <h1 class="reveal">We don't just learn tech. We build it.</h1>
       <p class="lead reveal">
         SQC is a high-energy community where creators ship software, prototype robotics systems,
         explore AI, and learn by building things that actually work.
+      </p>
+      <p class="hero-typing reveal">
+        <span id="heroTypedText"></span><span class="hero-caret" aria-hidden="true"></span>
       </p>
 
       <div class="btn-row reveal">
@@ -188,6 +203,7 @@
       <a class="footer-ig" href="https://www.instagram.com/sqc_nitj/" target="_blank" rel="noopener noreferrer">@sqc_nitj</a>
     </div>
   </footer>
+  </div>
 
   <script src="main.js"></script>
 </body>

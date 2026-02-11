@@ -4,11 +4,16 @@ const topNav = document.getElementById("topNav");
 const pageLinks = document.querySelectorAll("[data-page-link]");
 const pages = document.querySelectorAll("[data-page]");
 const buttons = document.querySelectorAll(".btn");
+const tvScreen = document.getElementById("tvScreen");
 const bootScreen = document.getElementById("bootScreen");
 const typingCode = document.getElementById("typingCode");
+const compileStatus = document.getElementById("compileStatus");
+const siteShell = document.getElementById("siteShell");
+const heroTypedText = document.getElementById("heroTypedText");
 
 let isSwitchingPage = false;
 let queuedPageId = null;
+let heroTypingToken = 0;
 
 if (menuBtn && navLinks) {
   menuBtn.addEventListener("click", () => {
@@ -44,6 +49,11 @@ function setActivePage(pageId) {
     targetPage.classList.add("active");
     window.scrollTo({ top: 0, behavior: "smooth" });
     runReveal();
+    if (pageId === "home") {
+      startHeroTyping();
+    } else {
+      stopHeroTyping();
+    }
     return;
   }
 
@@ -66,6 +76,11 @@ function setActivePage(pageId) {
     currentPage.classList.remove("active", "view-leave");
     targetPage.classList.remove("view-enter", "view-enter-active");
     runReveal();
+    if (pageId === "home") {
+      startHeroTyping();
+    } else {
+      stopHeroTyping();
+    }
 
     isSwitchingPage = false;
 
@@ -80,14 +95,62 @@ function setActivePage(pageId) {
   }, 420);
 }
 
+function stopHeroTyping() {
+  heroTypingToken += 1;
+  if (heroTypedText) {
+    heroTypedText.textContent = "";
+  }
+}
+
+async function startHeroTyping() {
+  if (!heroTypedText) return;
+
+  const token = ++heroTypingToken;
+  const phrases = [
+    "Where builders ship real products.",
+    "Turning ideas into deployed systems.",
+    "Built by students. Used in the real world."
+  ];
+
+  heroTypedText.textContent = "";
+
+  while (token === heroTypingToken) {
+    for (const phrase of phrases) {
+      if (token !== heroTypingToken) return;
+
+      heroTypedText.textContent = "";
+      for (let i = 0; i <= phrase.length; i += 1) {
+        if (token !== heroTypingToken) return;
+        heroTypedText.textContent = phrase.slice(0, i);
+        await wait(28);
+      }
+
+      await wait(950);
+
+      for (let i = phrase.length; i >= 0; i -= 1) {
+        if (token !== heroTypingToken) return;
+        heroTypedText.textContent = phrase.slice(0, i);
+        await wait(13);
+      }
+
+      await wait(180);
+    }
+  }
+}
+
 function getPageFromHash() {
   const hash = window.location.hash.replace("#", "").trim();
   const valid = ["home", "projects", "events", "team"];
   return valid.includes(hash) ? hash : "home";
 }
 
-function runBootSequence() {
-  if (!bootScreen || !typingCode) return;
+const wait = (ms) => new Promise((resolve) => window.setTimeout(resolve, ms));
+
+async function runBootSequence() {
+  if (!bootScreen || !typingCode || !siteShell) {
+    if (siteShell) siteShell.classList.add("ready");
+    return;
+  }
 
   const code = [
     "public class Main {",
@@ -97,31 +160,43 @@ function runBootSequence() {
     "}"
   ].join("\n");
 
-  let index = 0;
-  typingCode.textContent = "";
   document.body.classList.add("intro-active");
 
-  const typingTimer = window.setInterval(() => {
+  if (tvScreen) {
+    tvScreen.classList.add("play");
+    await wait(1150);
+    tvScreen.classList.add("done");
+  }
+
+  await wait(120);
+  bootScreen.classList.add("active");
+  if (compileStatus) {
+    compileStatus.textContent = "";
+  }
+
+  let index = 0;
+  typingCode.textContent = "";
+  while (index <= code.length) {
     typingCode.textContent = code.slice(0, index);
     index += 1;
+    // slightly faster typing on spaces to keep the flow crisp
+    const currentChar = code[index - 1];
+    await wait(currentChar === " " ? 14 : 30);
+  }
 
-    if (index > code.length) {
-      window.clearInterval(typingTimer);
+  if (compileStatus) {
+    await wait(260);
+    compileStatus.textContent = "> Compiling Main.java ...";
+    await wait(480);
+    compileStatus.textContent = "> Build successful. Program executed.";
+  }
 
-      window.setTimeout(() => {
-        bootScreen.classList.add("done");
-        document.body.classList.remove("intro-active");
-      }, 700);
-    }
-  }, 34);
-
-  window.setTimeout(() => {
-    if (!bootScreen.classList.contains("done")) {
-      bootScreen.classList.add("done");
-      document.body.classList.remove("intro-active");
-      window.clearInterval(typingTimer);
-    }
-  }, 10000);
+  await wait(680);
+  bootScreen.classList.remove("active");
+  bootScreen.classList.add("done");
+  siteShell.classList.add("ready");
+  document.body.classList.remove("intro-active");
+  runReveal();
 }
 
 function runReveal() {
